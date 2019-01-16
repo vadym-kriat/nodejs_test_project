@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start-dev": "FORCE_DB=true PORT=3000 node src/app.js "
+    "start-dev": "FORCE_DB=true PORT=3000 node --inspect src/app.js "
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "eslint": "^5.12.0",
