@@ -26,6 +26,10 @@ const Phone = sequelize.define(
     },
     os: {
       type: Sequelize.STRING(40),
+    },
+    price: {
+      type: Sequelize.FLOAT,
+      validate: { isFloat: true, min: 0.0 }
     }
   },
   {
