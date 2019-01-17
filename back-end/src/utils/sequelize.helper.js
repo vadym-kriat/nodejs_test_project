@@ -3,7 +3,7 @@ const { sequelize } = require('../config/db/db.config');
 function initConnections() {
   const optionsObject = {
     // force : false is the default value
-    force: true,
+    force: process.env.UPDATE_DB === 'true',
   };
   return sequelize.sync(optionsObject);
 }

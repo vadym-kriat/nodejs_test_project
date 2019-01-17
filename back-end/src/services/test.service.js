@@ -1,7 +1,12 @@
 const { log, logErr } = require('../utils/log.helper');
+const { transformPhone } = require('../utils/transformer.helper');
 const { Phone } = require('../model/phone.model');
 
-function createTestPhone() {
+module.exports = {
+  runDevMethods
+};
+
+function createTestPhones() {
   Phone.create({
     producer: 'Xiaomi',
     model: 'Mi 8 Lite',
@@ -12,7 +17,7 @@ function createTestPhone() {
     os: 'Android'
   })
     .then((phone) => {
-      log('Phone created: ', phone);
+      log('Phone created: ', transformPhone(phone));
     })
     .catch((err) => {
       logErr(err);
@@ -20,10 +25,6 @@ function createTestPhone() {
 }
 
 function runDevMethods() {
-  createTestPhone();
+  createTestPhones();
   log('Development method has finished execution');
 }
-
-module.exports = {
-  runDevMethods
-};

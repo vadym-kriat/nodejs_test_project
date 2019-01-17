@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production PORT=3000 node src/app.js",
-    "start-dev": "NODE_ENV=development FORCE_DB=true PORT=3000 node --inspect src/app.js"
+    "start-dev": "NODE_ENV=development UPDATE_DB=true PORT=3000 node --inspect src/app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

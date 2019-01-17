@@ -12,7 +12,7 @@ function currentDateToString() {
   const minutes = formatDateTimeValues(date.getMinutes());
   const seconds = formatDateTimeValues(date.getSeconds());
 
-  return `${day}.${mounth}.${date.getFullYear()} ${hours}:${minutes}:${seconds}`;
+  return `${day}.${mounth}.${date.getFullYear()} ${hours}:${minutes}:${seconds}.${date.getMilliseconds()}`;
 }
 
 function log(text) {
