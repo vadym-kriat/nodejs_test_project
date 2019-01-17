@@ -46,6 +46,14 @@ const testUsers = [
   }
 ];
 
+function runDevMethods() {
+  if (process.env.UPDATE_DB === 'true') {
+    createTestPhones();
+    createTestUsers();
+  }
+  log('Development method has finished execution');
+}
+
 function createTestPhones() {
   testPhones.forEach(p => [
     Phone.create(p)
@@ -68,10 +76,4 @@ function createTestUsers() {
         logErr(err);
       });
   });
-}
-
-function runDevMethods() {
-  createTestPhones();
-  createTestUsers();
-  log('Development method has finished execution');
 }

@@ -17,6 +17,7 @@ function transformUser(user) {
   return {
     id: user.id,
     username: user.username,
+    message: user.message,
     rate: user.rate,
     phoneId: user.phoneId
   };
