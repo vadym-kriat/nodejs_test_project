@@ -4,7 +4,7 @@ const { sequelize } = require('../config/db/db.config');
 const Phone = sequelize.define(
   'phone',
   {
-    name: {
+    producer: {
       type: Sequelize.STRING(80), allowNull: false
     },
     model: {

@@ -1,7 +1,7 @@
 const { initSequelize } = require('./sequelize.helper');
 
-const bootstrap = () => {
-  initSequelize()
+function bootstrap() {
+  return initSequelize()
     .then(() => {
       console.log('Sequelize initialization was successful.');
     })
@@ -9,7 +9,7 @@ const bootstrap = () => {
       console.error('An error has occurred in bootstrapHelper Err:');
       throw err;
     });
-};
+}
 
 module.exports = {
   bootstrapHelper: {

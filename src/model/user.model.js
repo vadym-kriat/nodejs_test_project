@@ -15,7 +15,7 @@ const User = sequelize.define(
       type: Sequelize.INTEGER,
       validate: { isInt: true, min: 0, max: 10 }
     },
-    phone_id: {
+    phoneId: {
       type: Sequelize.INTEGER,
 
       references: {

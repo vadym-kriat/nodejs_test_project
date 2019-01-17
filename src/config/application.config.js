@@ -6,9 +6,11 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const { bootstrapHelper } = require('../utils/bootstrap.helper');
 
-const createApp = () => express();
+function createApp() {
+  return express();
+}
 
-const initViewAndStyles = (app) => {
+function initViewAndStyles(app) {
   app.set('views', path.join(__dirname, '../views'));
   app.set('view engine', 'pug');
 
@@ -19,9 +21,9 @@ const initViewAndStyles = (app) => {
     sourceMap: true
   }));
   app.use(express.static(path.join(__dirname, '../public')));
-};
+}
 
-const initApplication = (app) => {
+function initApplication(app) {
   initViewAndStyles(app);
 
   app.use(logger('dev'));
@@ -32,11 +34,8 @@ const initApplication = (app) => {
   app.use(cookieParser());
   app.use(bodyParser.json());
 
-  bootstrapHelper.bootstrap();
-
-  // // error handler
-
-};
+  return bootstrapHelper.bootstrap();
+}
 
 module.exports = {
   createApp,
