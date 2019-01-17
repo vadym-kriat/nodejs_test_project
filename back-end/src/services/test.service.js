@@ -1,6 +1,7 @@
 const { log, logErr } = require('../utils/log.helper');
-const { transformPhone } = require('../utils/transformer.helper');
+const { transformPhone, transformUser } = require('../utils/transformer.helper');
 const { Phone } = require('../model/phone.model');
+const { User } = require('../model/user.model');
 
 module.exports = {
   runDevMethods
@@ -29,11 +30,27 @@ const testPhones = [
   }
 ];
 
+const messages = ['Тестовое сообщение 1', 'Тестовое сообщение 2'];
+const testUsers = [
+  {
+    username: 'Лапин Сергей',
+    message: messages[0],
+    rate: 5,
+    phoneId: 2
+  },
+  {
+    username: 'Павел',
+    message: messages[1],
+    rate: 4,
+    phoneId: 2
+  }
+];
+
 function createTestPhones() {
   testPhones.forEach(p => [
     Phone.create(p)
       .then((phone) => {
-        log('Phone created: ', transformPhone(phone));
+        log('Phone has created: ', transformPhone(phone));
       })
       .catch((err) => {
         logErr(err);
@@ -41,7 +58,20 @@ function createTestPhones() {
   ]);
 }
 
+function createTestUsers() {
+  testUsers.forEach((u) => {
+    User.create(u)
+      .then((user) => {
+        log('User has created: ', transformUser(user));
+      })
+      .catch((err) => {
+        logErr(err);
+      });
+  });
+}
+
 function runDevMethods() {
   createTestPhones();
+  createTestUsers();
   log('Development method has finished execution');
 }
