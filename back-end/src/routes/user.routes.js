@@ -1,4 +1,5 @@
 const { api } = require('../utils/route.helper');
+const { errorHandel } = require('./error.handler');
 const { logErr } = require('../utils/log.helper');
 const { transformUser } = require('../utils/transformer.helper');
 const { userService } = require('../services/user.service');
@@ -17,5 +18,6 @@ async function findAllByPhoneId(req, res) {
     res.send(users.map(u => transformUser(u)));
   } catch (e) {
     logErr(e);
+    errorHandel.serverError(e, res);
   }
 }
