@@ -12,23 +12,20 @@ function initPhoneRoutes(app) {
   app.get(api('/phones/:id'), findById);
 }
 
-function findAll(req, res) {
-  phoneService.findAll()
-    .then((phones) => {
-      res.send(phones.map(p => transformPhone(p)));
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+async function findAll(req, res) {
+  try {
+    const phones = await phoneService.findAll();
+    res.send(phones.map(p => transformPhone(p)));
+  } catch (e) {
+    console.error(e);
+  }
 }
 
-function findById(req, res) {
-  phoneService.findById(req.params.id)
-    .then((phone) => {
-      res.send(transformPhone(phone));
-    })
-    .catch((err) => {
-      logErr(err);
-      res.send(err);
-    });
+async function findById(req, res) {
+  try {
+    const phone = await phoneService.findById(req.params.id);
+    res.send(transformPhone(phone));
+  } catch (e) {
+    logErr(e);
+  }
 }

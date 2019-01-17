@@ -11,12 +11,11 @@ function initUserRoutes(app) {
   app.get(api('/phones/:phoneId/users'), findAllByPhoneId);
 }
 
-function findAllByPhoneId(req, res) {
-  userService.findAllByPhoneId(req.params.phoneId)
-    .then((users) => {
-      res.send(users.map(u => transformUser(u)));
-    })
-    .catch((err) => {
-      logErr(err);
-    });
+async function findAllByPhoneId(req, res) {
+  try {
+    const users = await userService.findAllByPhoneId(req.params.phoneId);
+    res.send(users.map(u => transformUser(u)));
+  } catch (e) {
+    logErr(e);
+  }
 }

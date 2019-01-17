@@ -50,30 +50,28 @@ function runDevMethods() {
   if (process.env.UPDATE_DB === 'true') {
     createTestPhones();
     createTestUsers();
+    log('Development method has finished execution');
   }
-  log('Development method has finished execution');
 }
 
 function createTestPhones() {
-  testPhones.forEach(p => [
-    Phone.create(p)
-      .then((phone) => {
-        log('Phone has created: ', transformPhone(phone));
-      })
-      .catch((err) => {
-        logErr(err);
-      })
-  ]);
+  testPhones.forEach(async (p) => {
+    try {
+      const phone = await Phone.create(p);
+      log('Phone has created: ', transformPhone(phone));
+    } catch (e) {
+      logErr(e);
+    }
+  });
 }
 
 function createTestUsers() {
-  testUsers.forEach((u) => {
-    User.create(u)
-      .then((user) => {
-        log('User has created: ', transformUser(user));
-      })
-      .catch((err) => {
-        logErr(err);
-      });
+  testUsers.forEach(async (u) => {
+    try {
+      const user = await User.create(u);
+      log('User has created: ', transformUser(user));
+    } catch (e) {
+      logErr(e);
+    }
   });
 }
