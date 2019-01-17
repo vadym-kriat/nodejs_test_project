@@ -8,7 +8,8 @@ function transformPhone(phone) {
     camera: phone.camera,
     ramMemory: phone.ramMemory,
     storage: phone.storage,
-    os: phone.os
+    os: phone.os,
+    price: phone.price
   };
 }
 
