@@ -11,7 +11,7 @@ module.exports = {
 function initPhoneRoutes(app) {
   app.get(api('/phones'), findAll);
   app.get(api('/phones/:id'), findById);
-  app.put(api('/phones'), addPhone);
+  app.post(api('/phones'), addPhone);
 }
 
 async function findAll(req, res) {

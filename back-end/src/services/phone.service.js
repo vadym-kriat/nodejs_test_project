@@ -33,7 +33,6 @@ async function save(rawPhone) {
 
   try {
     const phone = transformPhone(rawPhone);
-    console.log(phone);
 
     await Phone.upsert(phone);
   } catch (e) {
