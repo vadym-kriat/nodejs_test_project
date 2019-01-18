@@ -6,13 +6,13 @@ function formatDateTimeValues(num) {
 function currentDateToString() {
   const date = new Date();
 
-  const mounth = formatDateTimeValues(date.getMonth() + 1);
+  const month = formatDateTimeValues(date.getMonth() + 1);
   const day = formatDateTimeValues(date.getDate());
   const hours = formatDateTimeValues(date.getHours());
   const minutes = formatDateTimeValues(date.getMinutes());
   const seconds = formatDateTimeValues(date.getSeconds());
 
-  return `${day}.${mounth}.${date.getFullYear()} ${hours}:${minutes}:${seconds}.${date.getMilliseconds()}`;
+  return `${day}.${month}.${date.getFullYear()} ${hours}:${minutes}:${seconds}.${date.getMilliseconds()}`;
 }
 
 function log(text) {
@@ -21,6 +21,7 @@ function log(text) {
 
 function logErr(text) {
   console.error(`ERROR ${currentDateToString()} ${text}`);
+  console.error(text);
 }
 
 module.exports = {

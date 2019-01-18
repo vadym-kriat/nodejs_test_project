@@ -11,6 +11,7 @@ module.exports = {
 function initPhoneRoutes(app) {
   app.get(api('/phones'), findAll);
   app.get(api('/phones/:id'), findById);
+  app.put(api('/phones'), addPhone);
 }
 
 async function findAll(req, res) {
@@ -29,8 +30,18 @@ async function findById(req, res) {
     if (phone) {
       res.send(transformPhone(phone));
     } else {
-      errorHandel.resourceNotFound('Phone with specified id doesn\'t exist.', res);
+      errorHandel.badRequest('Phone with specified id doesn\'t exist.', res);
     }
+  } catch (e) {
+    logErr(e);
+    errorHandel.serverError(e, res);
+  }
+}
+
+async function addPhone(req, res) {
+  try {
+    await phoneService.save(req.body);
+    res.status(201).send();
   } catch (e) {
     logErr(e);
     errorHandel.serverError(e, res);
