@@ -10,7 +10,16 @@ module.exports = {
   }
 };
 
-function findAllByPhoneId(phoneId) {
+async function findAllByPhoneId(phoneId) {
+  const phone = await Phone.findOne({
+    where: {
+      id: phoneId
+    }
+  });
+  if (!phone) {
+    throw new Error('Phone with specified id doesn\'t exist.');
+  }
+
   return User.findAll({
     where: {
       phoneId
