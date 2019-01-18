@@ -13,10 +13,15 @@ const User = sequelize.define(
     },
     rate: {
       type: Sequelize.INTEGER,
-      validate: { isInt: true, min: 0, max: 10 }
+      allowNull: true,
+
+      validate: {
+        isInt: true, min: 0, max: 10
+      }
     },
     phoneId: {
       type: Sequelize.INTEGER,
+      allowNull: false,
 
       references: {
         model: Phone,

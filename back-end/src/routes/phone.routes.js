@@ -27,11 +27,7 @@ async function findAll(req, res) {
 async function findById(req, res) {
   try {
     const phone = await phoneService.findById(req.params.id);
-    if (phone) {
-      res.send(transformPhone(phone));
-    } else {
-      errorHandel.badRequest('Phone with specified id doesn\'t exist.', res);
-    }
+    res.send(transformPhone(phone));
   } catch (e) {
     logErr(e);
     errorHandel.serverError(e, res);
