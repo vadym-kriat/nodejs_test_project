@@ -1,15 +1,15 @@
 
 function transformPhone(phone) {
   return {
-    id: phone.id,
+    id: +phone.id,
     producer: phone.producer,
     model: phone.model,
-    diagonal: phone.diagonal,
+    diagonal: +phone.diagonal,
     camera: phone.camera,
-    ramMemory: phone.ramMemory,
-    storage: phone.storage,
+    ramMemory: +phone.ramMemory,
+    storage: +phone.storage,
     os: phone.os,
-    price: phone.price
+    price: +phone.price
   };
 }
 
