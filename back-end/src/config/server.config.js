@@ -1,8 +1,11 @@
 /* eslint-disable no-restricted-globals */
+const io = require('socket.io');
+
 function initServer(server) {
   const httpPort = normalizePort(process.env.PORT || '3000');
 
   server.listen(httpPort);
+  io.listen(server);
 
   server.on('error', onError);
   server.on('listening', onListening);
