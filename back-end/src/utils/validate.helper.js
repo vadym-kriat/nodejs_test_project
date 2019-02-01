@@ -48,7 +48,7 @@ function validatePhone(phone) {
   if (os && os.length > 40) {
     errorMap.set('os', 'OS must be less then 40 characters.');
   }
-  if (price && isFloat(price) && +price > 0) {
+  if (price && !isFloat(price) && !(+price > 0)) {
     errorMap.set('price', 'Price must be number and more then 0.');
   }
   return errorMap;
