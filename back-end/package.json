@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production PORT=3000 node src/app.js",
-    "start-dev": "NODE_ENV=development UPDATE_DB=true PORT=3000 node --inspect src/app.js"
+    "start-dev": "NODE_ENV=development UPDATE_DB=true PORT=3000 node --inspect src/app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -17,10 +19,12 @@
     "mysql2": "^1.6.4",
     "node-sass-middleware": "0.11.0",
     "pug": "2.0.0-beta11",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0"
-  }
+  },
+  "snyk": true
 }
